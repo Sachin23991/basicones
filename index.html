@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Anime Quote Universe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Orbitron:wght@400;700;900&family=Kalam:wght@400;700&family=Bebas+Neue&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="universe-container">
+        <!-- Dynamic background system -->
+        <div class="cosmic-layers">
+            <div class="cosmic-dust"></div>
+            <div class="floating-particles"></div>
+            <div class="energy-waves"></div>
+            <div class="nebula-clouds"></div>
+            <canvas id="particleCanvas"></canvas>
+        </div>
+        
+        <!-- Main content -->
+        <div class="main-container">
+            <!-- Header with enhanced title -->
+            <header class="hero-section">
+                <div class="title-container">
+                    <h1 class="main-title">
+                        <span class="title-word" data-text="ULTIMATE">ULTIMATE</span>
+                        <span class="title-word" data-text="ANIME">ANIME</span>
+                        <span class="title-word" data-text="QUOTE">QUOTE</span>
+                        <span class="title-word" data-text="UNIVERSE">UNIVERSE</span>
+                    </h1>
+                    <div class="title-underline"></div>
+                </div>
+                <p class="subtitle">Experience the power of 100+ anime series motivational quotes</p>
+                <div class="stats-counter">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="100">0</span>
+                        <span class="stat-label">Anime Series</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="1000">0</span>
+                        <span class="stat-label">Epic Quotes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="50">0</span>
+                        <span class="stat-label">Characters</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Enhanced filter system -->
+            <div class="filter-system">
+                <h2 class="filter-title">Choose Your Motivation Type</h2>
+                <div class="motivation-categories">
+                    <button class="category-btn active" data-category="all">
+                        <div class="category-icon">🌟</div>
+                        <span>All Quotes</span>
+                        <div class="category-count">1000+</div>
+                    </button>
+                    <button class="category-btn" data-category="determination">
+                        <div class="category-icon">💪</div>
+                        <span>Determination</span>
+                        <div class="category-count">150+</div>
+                    </button>
+                    <button class="category-btn" data-category="courage">
+                        <div class="category-icon">⚔️</div>
+                        <span>Courage</span>
+                        <div class="category-count">120+</div>
+                    </button>
+                    <button class="category-btn" data-category="friendship">
+                        <div class="category-icon">🤝</div>
+                        <span>Friendship</span>
+                        <div class="category-count">100+</div>
+                    </button>
+                    <button class="category-btn" data-category="perseverance">
+                        <div class="category-icon">🔥</div>
+                        <span>Perseverance</span>
+                        <div class="category-count">110+</div>
+                    </button>
+                    <button class="category-btn" data-category="dreams">
+                        <div class="category-icon">✨</div>
+                        <span>Dreams</span>
+                        <div class="category-count">90+</div>
+                    </button>
+                    <button class="category-btn" data-category="wisdom">
+                        <div class="category-icon">🧠</div>
+                        <span>Wisdom</span>
+                        <div class="category-count">80+</div>
+                    </button>
+                    <button class="category-btn" data-category="sacrifice">
+                        <div class="category-icon">💔</div>
+                        <span>Sacrifice</span>
+                        <div class="category-count">70+</div>
+                    </button>
+                    <button class="category-btn" data-category="hope">
+                        <div class="category-icon">🌅</div>
+                        <span>Hope</span>
+                        <div class="category-count">85+</div>
+                    </button>
+                    <button class="category-btn" data-category="strength">
+                        <div class="category-icon">⚡</div>
+                        <span>Strength</span>
+                        <div class="category-count">95+</div>
+                    </button>
+                    <button class="category-btn" data-category="justice">
+                        <div class="category-icon">⚖️</div>
+                        <span>Justice</span>
+                        <div class="category-count">60+</div>
+                    </button>
+                    <button class="category-btn" data-category="love">
+                        <div class="category-icon">❤️</div>
+                        <span>Love</span>
+                        <div class="category-count">75+</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Enhanced anime series selection -->
+            <div class="series-selection">
+                <h2 class="section-title">Select Anime Series</h2>
+                <div class="series-search">
+                    <input type="text" placeholder="Search anime series..." id="seriesSearch">
+                    <div class="search-icon">🔍</div>
+                </div>
+                <div class="series-grid" id="seriesGrid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Enhanced quote display -->
+            <div class="quote-showcase" id="quoteShowcase">
+                <div class="quote-stage" id="quoteStage">
+                    <div class="background-layers">
+                        <div class="bg-layer primary-bg"></div>
+                        <div class="bg-layer secondary-bg"></div>
+                        <div class="bg-layer tertiary-bg"></div>
+                        <div class="bg-layer effects-layer"></div>
+                        <div class="bg-layer particles-layer"></div>
+                    </div>
+                    
+                    <div class="quote-content">
+                        <div class="anime-series-name"></div>
+                        <div class="character-name"></div>
+                        <div class="quote-text"></div>
+                        <div class="quote-category-tag"></div>
+                    </div>
+
+                    <div class="advanced-effects">
+                        <div class="power-aura"></div>
+                        <div class="energy-rings"></div>
+                        <div class="text-particles"></div>
+                        <div class="lightning-bolts"></div>
+                        <div class="cosmic-swirls"></div>
+                    </div>
+
+                    <div class="quote-navigation">
+                        <button class="nav-btn prev-btn" id="prevQuote">‹</button>
+                        <div class="quote-indicator">
+                            <span class="current-quote">1</span> / <span class="total-quotes">1000</span>
+                        </div>
+                        <button class="nav-btn next-btn" id="nextQuote">›</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced control panel -->
+            <div class="control-panel">
+                <div class="primary-controls">
+                    <button class="control-btn play-btn mega" id="playAnimation">
+                        <div class="btn-glow"></div>
+                        <span class="btn-icon">▶</span>
+                        <span class="btn-text">UNLEASH POWER</span>
+                        <div class="btn-particles"></div>
+                    </button>
+                </div>
+                <div class="secondary-controls">
+                    <button class="control-btn random-btn" id="randomQuote">
+                        <span class="btn-icon">🎲</span>
+                        <span class="btn-text">SURPRISE ME</span>
+                    </button>
+                    <button class="control-btn favorite-btn" id="favoriteQuote">
+                        <span class="btn-icon">❤️</span>
+                        <span class="btn-text">FAVORITE</span>
+                    </button>
+                    <button class="control-btn share-btn" id="shareQuote">
+                        <span class="btn-icon">📤</span>
+                        <span class="btn-text">SHARE</span>
+                    </button>
+                    <button class="control-btn fullscreen-btn" id="fullscreenMode">
+                        <span class="btn-icon">⛶</span>
+                        <span class="btn-text">FULLSCREEN</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Favorites panel -->
+            <div class="favorites-panel" id="favoritesPanel">
+                <h3>Your Favorite Quotes</h3>
+                <div class="favorites-list" id="favoritesList">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading screen -->
+        <div class="loading-screen" id="loadingScreen">
+            <div class="loading-animation">
+                <div class="loading-circle"></div>
+                <div class="loading-text">Loading Epic Quotes...</div>
+                <div class="loading-progress">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="anime-quotes-database.js"></script>
+    <script src="advanced-animations.js"></script>
+    <script src="particle-system.js"></script>
+    <script src="main-app.js"></script>
+</body>
+</html>
