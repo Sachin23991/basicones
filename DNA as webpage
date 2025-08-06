@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNA Web Generator - Ultimate Experience</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary-glow: #ff006e;
+            --secondary-glow: #8338ec;
+            --tertiary-glow: #3a86ff;
+            --success-glow: #06ffa5;
+            --warning-glow: #ffbe0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--primary-glow);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-glow);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Animated Matrix Background */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            overflow: hidden;
+        }
+
+        .matrix-column {
+            position: absolute;
+            top: -100%;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: var(--success-glow);
+            opacity: 0.1;
+            animation: matrixFall 15s linear infinite;
+        }
+
+        @keyframes matrixFall {
+            0% { top: -100%; opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { top: 100vh; opacity: 0; }
+        }
+
+        /* 3D DNA Helix */
+        .dna-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            perspective: 1000px;
+        }
+
+        .dna-helix {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 600px;
+            transform: translate(-50%, -50%) rotateX(45deg);
+            animation: helixRotate3D 20s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes helixRotate3D {
+            0% { transform: translate(-50%, -50%) rotateX(45deg) rotateY(0deg); }
+            100% { transform: translate(-50%, -50%) rotateX(45deg) rotateY(360deg); }
+        }
+
+        .helix-base {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--primary-glow);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--primary-glow);
+            animation: basePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes basePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+        }
+
+        /* Quantum Particles System */
+        .quantum-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .quantum-particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--tertiary-glow);
+            border-radius: 50%;
+            box-shadow: 0 0 10px currentColor;
+            animation: quantumMove 20s linear infinite;
+        }
+
+        @keyframes quantumMove {
+            0% { transform: translate(0, 100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; transform: scale(1); }
+            90% { opacity: 1; }
+            100% { transform: translate(100vw, -10vh) scale(0); opacity: 0; }
+        }
+
+        /* Main Container with Glass Morphism */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 0, 110, 0.1) 0%, transparent 50%);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Holographic Header */
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: slideInHologram 2s ease-out;
+        }
+
+        @keyframes slideInHologram {
+            0% { 
+                transform: translateY(-100px) rotateX(90deg); 
+                opacity: 0;
+                filter: blur(20px);
+            }
+            100% { 
+                transform: translateY(0) rotateX(0deg); 
+                opacity: 1;
+                filter: blur(0px);
+            }
+        }
+
+        .title {
+            font-family: 'Orbitron', monospace;
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, 
+                var(--primary-glow), 
+                var(--secondary-glow), 
+                var(--tertiary-glow), 
+                var(--success-glow),
+                var(--warning-glow)
+            );
+            background-size: 500% 500%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: 
+                hologramGlow 3s ease-in-out infinite,
+                textShimmer 8s ease-in-out infinite;
+            text-shadow: 
+                0 0 20px var(--primary-glow),
+                0 0 40px var(--secondary-glow),
+                0 0 60px var(--tertiary-glow);
+            filter: drop-shadow(0 0 30px var(--primary-glow));
+            letter-spacing: 8px;
+        }
+
+        @keyframes hologramGlow {
+            0%, 100% { 
+                filter: brightness(1) contrast(1);
+                transform: scale(1);
+            }
+            50% { 
+                filter: brightness(1.3) contrast(1.2);
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes textShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            opacity: 0.9;
+            animation: fadeInPulse 3s ease-out 1s both;
+            background: linear-gradient(90deg, var(--success-glow), var(--warning-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes fadeInPulse {
+            0% { 
+                transform: translateY(50px);
+                opacity: 0;
+                filter: blur(10px);
+            }
+            100% { 
+                transform: translateY(0);
+                opacity: 0.9;
+                filter: blur(0px);
+            }
+        }
+
+        /* Advanced Input Section */
+        .input-section {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(30px) saturate(200%);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            animation: morphIn 2s ease-out 1.5s both;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 100px rgba(255, 0, 110, 0.1);
+            position: relative;
+        }
+
+        .input-section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                var(--primary-glow), 
+                var(--secondary-glow), 
+                var(--tertiary-glow), 
+                var(--success-glow)
+            );
+            border-radius: 25px;
+            z-index: -1;
+            animation: borderGlow 4s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.6; filter: blur(5px); }
+            50% { opacity: 1; filter: blur(0px); }
+        }
+
+        @keyframes morphIn {
+            0% { 
+                transform: scale(0.8) rotateY(45deg);
+                opacity: 0;
+                filter: blur(20px);
+            }
+            100% { 
+                transform: scale(1) rotateY(0deg);
+                opacity: 1;
+                filter: blur(0px);
+            }
+        }
+
+        /* Futuristic Input Field */
+        .input-container {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        #nameInput {
+            width: 450px;
+            padding: 2rem 1.5rem;
+            font-size: 1.4rem;
+            font-family: 'Orbitron', monospace;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            color: #fff;
+            outline: none;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        #nameInput:focus {
+            border-color: var(--primary-glow);
+            box-shadow: 
+                0 0 50px rgba(255, 0, 110, 0.4),
+                inset 0 0 20px rgba(255, 0, 110, 0.1);
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        #nameInput::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+            animation: placeholderGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes placeholderGlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Quantum Generate Button */
+        .generate-btn {
+            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+            border: none;
+            padding: 2rem 4rem;
+            font-size: 1.3rem;
+            font-family: 'Orbitron', monospace;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: 
+                0 15px 30px rgba(255, 0, 110, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 25px 50px rgba(255, 0, 110, 0.5),
+                0 0 100px rgba(131, 56, 236, 0.3);
+            filter: brightness(1.2);
+        }
+
+        .generate-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .generate-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.4), 
+                transparent
+            );
+            transition: left 0.6s ease;
+        }
+
+        .generate-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Holographic Loading */
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .quantum-spinner {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+        }
+
+        .spinner-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid transparent;
+            border-top: 3px solid var(--primary-glow);
+            border-radius: 50%;
+            animation: quantumSpin 2s linear infinite;
+        }
+
+        .spinner-ring:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 10px;
+            left: 10px;
+            border-top-color: var(--secondary-glow);
+            animation-duration: 1.5s;
+            animation-direction: reverse;
+        }
+
+        .spinner-ring:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            top: 20px;
+            left: 20px;
+            border-top-color: var(--tertiary-glow);
+            animation-duration: 1s;
+        }
+
+        @keyframes quantumSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.2rem;
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { 
+                color: var(--primary-glow);
+                text-shadow: 0 0 20px var(--primary-glow);
+            }
+            33% { 
+                color: var(--secondary-glow);
+                text-shadow: 0 0 20px var(--secondary-glow);
+            }
+            66% { 
+                color: var(--tertiary-glow);
+                text-shadow: 0 0 20px var(--tertiary-glow);
+            }
+        }
+
+        /* Results Section with Advanced Effects */
+        .results {
+            display: none;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(40px) saturate(200%);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 3rem;
+            max-width: 900px;
+            width: 100%;
+            animation: resultsAppear 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        @keyframes resultsAppear {
+            0% { 
+                transform: translateY(100px) scale(0.9) rotateX(45deg);
+                opacity: 0;
+                filter: blur(30px);
+            }
+            100% { 
+                transform: translateY(0) scale(1) rotateX(0deg);
+                opacity: 1;
+                filter: blur(0px);
+            }
+        }
+
+        .results::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 0, 110, 0.1) 0%,
+                rgba(131, 56, 236, 0.1) 50%,
+                rgba(58, 134, 255, 0.1) 100%
+            );
+            border-radius: 30px;
+            z-index: -1;
+            animation: resultsGlow 6s ease-in-out infinite;
+        }
+
+        @keyframes resultsGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* DNA Profile Display */
+        .dna-profile {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-name {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            animation: nameReveal 2s ease-out;
+            text-shadow: 
+                0 0 20px currentColor,
+                0 0 40px currentColor,
+                0 0 60px currentColor;
+            letter-spacing: 5px;
+        }
+
+        @keyframes nameReveal {
+            0% { 
+                transform: scale(0.5) rotateY(180deg);
+                opacity: 0;
+                filter: blur(20px);
+            }
+            50% {
+                transform: scale(1.1) rotateY(90deg);
+                filter: blur(10px);
+            }
+            100% { 
+                transform: scale(1) rotateY(0deg);
+                opacity: 1;
+                filter: blur(0px);
+            }
+        }
+
+        .personality-vibe {
+            font-size: 1.8rem;
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            animation: vibeGlow 3s ease-in-out infinite;
+            background: linear-gradient(90deg, var(--success-glow), var(--warning-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes vibeGlow {
+            0%, 100% { 
+                filter: brightness(1);
+                transform: scale(1);
+            }
+            50% { 
+                filter: brightness(1.3);
+                transform: scale(1.02);
+            }
+        }
+
+        /* Advanced Color Palette */
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .color-block {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .color-block:hover {
+            transform: scale(1.2) rotate(10deg) translateY(-10px);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                0 0 60px currentColor;
+            z-index: 10;
+        }
+
+        .color-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.3) 0%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.1) 100%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .color-block:hover::before {
+            opacity: 1;
+        }
+
+        .color-block.copied {
+            animation: copyPulse 0.6s ease-out;
+        }
+
+        @keyframes copyPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        /* Quantum DNA Badge */
+        .dna-badge {
+            background: linear-gradient(135deg, 
+                rgba(102, 126, 234, 0.8) 0%,
+                rgba(118, 75, 162, 0.8) 100%
+            );
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: badgeHologram 5s ease-in-out infinite;
+        }
+
+        @keyframes badgeHologram {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 50px rgba(102, 126, 234, 0.6),
+                    inset 0 0 50px rgba(118, 75, 162, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 80px rgba(118, 75, 162, 0.8),
+                    inset 0 0 80px rgba(102, 126, 234, 0.5);
+                transform: scale(1.02);
+            }
+        }
+
+        .badge-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+
+        .badge-content {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .download-btn, .reset-btn {
+            padding: 1.5rem 3rem;
+            font-size: 1.1rem;
+            font-family: 'Orbitron', monospace;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, var(--success-glow), var(--warning-glow));
+            color: #000;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(6, 255, 165, 0.4);
+        }
+
+        .reset-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .reset-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Floating Quantum Elements */
+        .quantum-orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-glow), transparent);
+            pointer-events: none;
+            animation: quantumFloat 25s infinite ease-in-out;
+            opacity: 0.6;
+        }
+
+        @keyframes quantumFloat {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1);
+                opacity: 0.6;
+            }
+            25% { 
+                transform: translate(300px, -200px) scale(1.5);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: translate(-200px, -400px) scale(0.8);
+                opacity: 0.4;
+            }
+            75% { 
+                transform: translate(-400px, 200px) scale(1.2);
+                opacity: 0.7;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3rem;
+                letter-spacing: 4px;
+            }
+            
+            #nameInput {
+                width: 350px;
+                padding: 1.5rem;
+                font-size: 1.2rem;
+            }
+            
+            .color-block {
+                width: 80px;
+                height: 80px;
+            }
+
+            .generate-btn {
+                padding: 1.5rem 2.5rem;
+                font-size: 1.1rem;
+            }
+
+            .profile-name {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+            }
+            
+            #nameInput {
+                width: 300px;
+            }
+            
+            .color-block {
+                width: 60px;
+                height: 60px;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Matrix Background -->
+    <div class="matrix-bg" id="matrixBg"></div>
+
+    <!-- 3D DNA Helix -->
+    <div class="dna-container">
+        <div class="dna-helix" id="dnaHelix"></div>
+    </div>
+
+    <!-- Quantum Field -->
+    <div class="quantum-field" id="quantumField"></div>
+
+    <!-- Floating Quantum Orbs -->
+    <div class="quantum-orb" style="top: 10%; left: 10%; width: 100px; height: 100px;"></div>
+    <div class="quantum-orb" style="top: 20%; right: 15%; width: 150px; height: 150px; animation-delay: -8s;"></div>
+    <div class="quantum-orb" style="bottom: 30%; left: 20%; width: 80px; height: 80px; animation-delay: -15s;"></div>
+    <div class="quantum-orb" style="bottom: 10%; right: 10%; width: 120px; height: 120px; animation-delay: -22s;"></div>
+
+    <div class="main-container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">QUANTUM DNA</h1>
+            <p class="subtitle">Neural Web Generator • Unlock Your Digital Genome</p>
+        </div>
+
+        <!-- Input Section -->
+        <div class="input-section">
+            <div class="input-container">
+                <input type="text" id="nameInput" placeholder="▶ ENTER YOUR IDENTITY..." maxlength="25">
+            </div>
+            <button class="generate-btn" onclick="generateQuantumDNA()">
+                🧬 INITIALIZE QUANTUM SCAN
+            </button>
+        </div>
+
+        <!-- Loading Section -->
+        <div class="loading" id="loading">
+            <div class="quantum-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+            </div>
+            <div class="loading-text">QUANTUM PROCESSING...</div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results" id="results">
+            <div class="dna-profile">
+                <h2 class="profile-name" id="profileName"></h2>
+                <p class="personality-vibe" id="personalityVibe"></p>
+            </div>
+
+            <div class="color-palette" id="colorPalette"></div>
+
+            <div class="dna-badge" id="dnaBadge">
+                <div class="badge-title">🧬 QUANTUM DNA SIGNATURE</div>
+                <div class="badge-content" id="badgeContent"></div>
+                
+                <div class="action-buttons">
+                    <button class="download-btn" onclick="downloadQuantumBadge()">
+                        📸 CAPTURE SIGNATURE
+                    </button>
+                    <button class="reset-btn" onclick="resetQuantumGenerator()">
+                        🔄 NEW SCAN
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Advanced cursor tracking
+        let cursor = document.querySelector('.cursor');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Matrix background generation
+        function createMatrixRain() {
+            const matrixBg = document.getElementById('matrixBg');
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            
+            for (let i = 0; i < 50; i++) {
+                const column = document.createElement('div');
+                column.className = 'matrix-column';
+                column.style.left = Math.random() * 100 + '%';
+                column.style.animationDelay = Math.random() * 15 + 's';
+                column.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                
+                let text = '';
+                for (let j = 0; j < 20; j++) {
+                    text += chars.charAt(Math.floor(Math.random() * chars.length)) + '<br>';
+                }
+                column.innerHTML = text;
+                
+                matrixBg.appendChild(column);
+            }
+        }
+
+        // 3D DNA Helix creation
+        function create3DDNAHelix() {
+            const helix = document.getElementById('dnaHelix');
+            const baseCount = 40;
+            
+            for (let i = 0; i < baseCount; i++) {
+                const base1 = document.createElement('div');
+                const base2 = document.createElement('div');
+                
+                base1.className = base2.className = 'helix-base';
+                
+                const angle = (i / baseCount) * Math.PI * 8;
+                const y = (i / baseCount) * 600;
+                
+                base1.style.left = (100 + Math.cos(angle) * 80) + 'px';
+                base1.style.top = y + 'px';
+                base1.style.animationDelay = (i * 0.1) + 's';
+                
+                base2.style.left = (100 + Math.cos(angle + Math.PI) * 80) + 'px';
+                base2.style.top = y + 'px';
+                base2.style.animationDelay = (i * 0.1 + 1) + 's';
+                base2.style.background = 'var(--secondary-glow)';
+                base2.style.boxShadow = '0 0 20px var(--secondary-glow)';
+                
+                helix.appendChild(base1);
+                helix.appendChild(base2);
+            }
+        }
+
+        // Quantum particle field
+        function createQuantumField() {
+            const field = document.getElementById('quantumField');
+            const colors = ['--primary-glow', '--secondary-glow', '--tertiary-glow', '--success-glow'];
+            
+            for (let i = 0; i < 100; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'quantum-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+                particle.style.background = `var(${colors[Math.floor(Math.random() * colors.length)]})`;
+                
+                field.appendChild(particle);
+            }
+        }
+
+        // Advanced DNA generation algorithm
+        function generateQuantumDNA() {
+            const name = document.getElementById('nameInput').value.trim();
+            
+            if (!name) {
+                alert('⚠️ IDENTITY REQUIRED FOR QUANTUM SCAN');
+                return;
+            }
+
+            // Show loading with enhanced animation
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+            
+            // Enhanced loading text animation
+            const loadingTexts = [
+                'QUANTUM PROCESSING...',
+                'ANALYZING DNA STRUCTURE...',
+                'GENERATING COLOR MATRIX...',
+                'COMPUTING PERSONALITY VECTORS...',
+                'FINALIZING SIGNATURE...'
+            ];
+            
+            let textIndex = 0;
+            const loadingInterval = setInterval(() => {
+                document.querySelector('.loading-text').textContent = loadingTexts[textIndex];
+                textIndex = (textIndex + 1) % loadingTexts.length;
+            }, 800);
+
+            // Process after enhanced loading
+            setTimeout(() => {
+                clearInterval(loadingInterval);
+                processQuantumName(name);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('results').style.display = 'block';
+            }, 4000);
+        }
+
+        function processQuantumName(name) {
+            // Advanced color generation using quantum algorithms
+            const colors = generateQuantumColors(name);
+            const personality = generateAdvancedPersonality(name);
+            
+            // Update profile with enhanced animations
+            const profileName = document.getElementById('profileName');
+            profileName.textContent = name.toUpperCase();
+            profileName.style.background = `linear-gradient(45deg, ${colors.join(', ')})`;
+            profileName.style.webkitBackgroundClip = 'text';
+            profileName.style.webkitTextFillColor = 'transparent';
+            
+            document.getElementById('personalityVibe').textContent = personality;
+            
+            // Display enhanced color palette
+            displayQuantumPalette(colors);
+            
+            // Update quantum badge
+            updateQuantumBadge(name, personality, colors);
+        }
+
+        function generateQuantumColors(name) {
+            const colors = [];
+            let quantumHash = 0;
+            
+            // Multi-layer hashing for complexity
+            for (let i = 0; i < name.length; i++) {
+                const char = name.charCodeAt(i);
+                quantumHash = ((quantumHash << 7) + (quantumHash << 3) + char) & 0xFFFFFFFF;
+                quantumHash ^= (quantumHash >>> 16);
+            }
+            
+            // Generate 6 quantum colors
+            for (let i = 0; i < 6; i++) {
+                const seed = quantumHash * (i + 1) * 1.618033988749; // Golden ratio
+                const hue = Math.abs(Math.floor(seed) % 360);
+                const saturation = 70 + (Math.abs(Math.floor(seed * 1.732)) % 25); // sqrt(3)
+                const lightness = 45 + (Math.abs(Math.floor(seed * 2.236)) % 30); // sqrt(5)
+                
+                colors.push(`hsl(${hue}, ${saturation}%, ${lightness}%)`);
+            }
+            
+            return colors;
+        }
+
+        function generateAdvancedPersonality(name) {
+            const prefixes = [
+                'Quantum', 'Neural', 'Cosmic', 'Cyber', 'Nano', 'Hyper',
+                'Ultra', 'Meta', 'Neo', 'Omni', 'Synth', 'Flux'
+            ];
+            
+            const archetypes = [
+                'Data Mystic', 'Code Shaman', 'Digital Alchemist', 'Byte Wizard',
+                'Pixel Sage', 'Algorithm Dancer', 'Binary Prophet', 'Tech Oracle',
+                'Virtual Architect', 'Quantum Dreamer', 'Cyber Nomad', 'Data Weaver',
+                'Code Poet', 'Digital Monk', 'Neon Philosopher', 'Matrix Walker'
+            ];
+            
+            const suffixes = [
+                'of the Digital Realm', 'from Beyond the Screen', 'of Infinite Loops',
+                'Bearer of Sacred Code', 'Guardian of Data Streams', 'Master of Pixels',
+                'Keeper of Algorithms', 'Whisperer to Machines', 'Dancer in Networks'
+            ];
+            
+            const nameValue = name.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
+            
+            const prefix = prefixes[nameValue % prefixes.length];
+            const archetype = archetypes[(nameValue * 7) % archetypes.length];
+            const suffix = suffixes[(nameValue * 13) % suffixes.length];
+            
+            return `${prefix} ${archetype} ${suffix}`;
+        }
+
+        function displayQuantumPalette(colors) {
+            const palette = document.getElementById('colorPalette');
+            palette.innerHTML = '';
+            
+            colors.forEach((color, index) => {
+                const colorBlock = document.createElement('div');
+                colorBlock.className = 'color-block';
+                colorBlock.style.backgroundColor = color;
+                colorBlock.style.animationDelay = `${index * 0.3}s`;
+                
+                // Extract HSL values for display
+                const hslMatch = color.match(/hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)/);
+                if (hslMatch) {
+                    colorBlock.innerHTML = `
+                        <div style="text-align: center; font-size: 0.7rem;">
+                            H: ${hslMatch[1]}<br>
+                            S: ${hslMatch[2]}<br>
+                            L: ${hslMatch[3]}
+                        </div>
+                    `;
+                }
+                
+                colorBlock.title = `Click to copy: ${color}`;
+                
+                colorBlock.addEventListener('click', () => {
+                    navigator.clipboard.writeText(color).then(() => {
+                        colorBlock.classList.add('copied');
+                        colorBlock.innerHTML = '<div>COPIED!</div>';
+                        setTimeout(() => {
+                            colorBlock.classList.remove('copied');
+                            if (hslMatch) {
+                                colorBlock.innerHTML = `
+                                    <div style="text-align: center; font-size: 0.7rem;">
+                                        H: ${hslMatch[1]}<br>
+                                        S: ${hslMatch[2]}<br>
+                                        L: ${hslMatch[3]}
+                                    </div>
+                                `;
+                            }
+                        }, 1500);
+                    }).catch(() => {
+                        colorBlock.innerHTML = '<div>ERROR!</div>';
+                        setTimeout(() => {
+                            if (hslMatch) {
+                                colorBlock.innerHTML = `
+                                    <div style="text-align: center; font-size: 0.7rem;">
+                                        H: ${hslMatch[1]}<br>
+                                        S: ${hslMatch[2]}<br>
+                                        L: ${hslMatch[3]}
+                                    </div>
+                                `;
+                            }
+                        }, 1500);
+                    });
+                });
+                
+                palette.appendChild(colorBlock);
+            });
+        }
+
+        function updateQuantumBadge(name, personality, colors) {
+            const badge = document.getElementById('dnaBadge');
+            const content = document.getElementById('badgeContent');
+            
+            content.innerHTML = `
+                <div style="font-size: 1.3rem; margin-bottom: 0.5rem; font-family: 'Orbitron', monospace;">
+                    <strong>${name.toUpperCase()}</strong>
+                </div>
+                <div style="margin-bottom: 0.8rem; font-style: italic;">
+                    ${personality}
+                </div>
+                <div style="font-size: 0.9rem; opacity: 0.8;">
+                    Quantum DNA Signature • Authenticated ${new Date().getFullYear()}
+                </div>
+            `;
+            
+            badge.style.background = `linear-gradient(135deg, ${colors[0]}, ${colors[2]}, ${colors[4]})`;
+        }
+
+        function downloadQuantumBadge() {
+            // Enhanced screenshot functionality
+            const badge = document.getElementById('dnaBadge');
+            
+            // Create enhanced visual for screenshot
+            badge.style.transform = 'scale(1.1)';
+            badge.style.filter = 'brightness(1.2)';
+            
+            setTimeout(() => {
+                // Reset after screenshot
+                badge.style.transform = 'scale(1)';
+                badge.style.filter = 'brightness(1)';
+                
+                // Simulate screenshot (in real implementation, use html2canvas)
+                alert('📸 SIGNATURE CAPTURED! Right-click the badge to save as image.');
+            }, 500);
+        }
+
+        function resetQuantumGenerator() {
+            document.getElementById('nameInput').value = '';
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('nameInput').focus();
+            
+            // Add reset animation
+            const input = document.getElementById('nameInput');
+            input.style.transform = 'scale(1.1)';
+            input.style.boxShadow = '0 0 30px var(--success-glow)';
+            
+            setTimeout(() => {
+                input.style.transform = 'scale(1)';
+                input.style.boxShadow = 'none';
+            }, 300);
+        }
+
+        // Enhanced keyboard interactions
+        document.getElementById('nameInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                generateQuantumDNA();
+            }
+        });
+
+        // Real-time input effects
+        document.getElementById('nameInput').addEventListener('input', function(e) {
+            const value = e.target.value;
+            if (value.length > 0) {
+                e.target.style.background = `linear-gradient(45deg, 
+                    rgba(255, 0, 110, 0.1), 
+                    rgba(131, 56, 236, 0.1))`;
+            } else {
+                e.target.style.background = 'rgba(255, 255, 255, 0.05)';
+            }
+        });
+
+        // Enhanced initialization
+        window.addEventListener('load', () => {
+            createMatrixRain();
+            create3DDNAHelix();
+            createQuantumField();
+            
+            // Auto-focus with animation
+            const input = document.getElementById('nameInput');
+            setTimeout(() => {
+                input.focus();
+                input.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    input.style.transform = 'scale(1)';
+                }, 300);
+            }, 2000);
+        });
+
+        // Continuous ambient effects
+        setInterval(() => {
+            // Randomize quantum particles
+            const particles = document.querySelectorAll('.quantum-particle');
+            particles.forEach(particle => {
+                if (Math.random() > 0.98) {
+                    const colors = ['--primary-glow', '--secondary-glow', '--tertiary-glow', '--success-glow'];
+                    particle.style.background = `var(${colors[Math.floor(Math.random() * colors.length)]})`;
+                }
+            });
+            
+            // Dynamic matrix updates
+            const columns = document.querySelectorAll('.matrix-column');
+            columns.forEach(column => {
+                if (Math.random() > 0.99) {
+                    column.style.color = `var(--${['primary', 'secondary', 'tertiary', 'success'][Math.floor(Math.random() * 4)]}-glow)`;
+                }
+            });
+        }, 100);
+
+        // Advanced hover effects for interactive elements
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.classList.contains('generate-btn') || 
+                e.target.classList.contains('download-btn') || 
+                e.target.classList.contains('reset-btn')) {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+                cursor.style.borderColor = 'var(--success-glow)';
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            if (e.target.classList.contains('generate-btn') || 
+                e.target.classList.contains('download-btn') || 
+                e.target.classList.contains('reset-btn')) {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.borderColor = 'var(--primary-glow)';
+            }
+        });
+    </script>
+</body>
+</html>
